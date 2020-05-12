@@ -28,22 +28,28 @@ main {
     height: 165px;
     width: 165px;
     border-radius: 50px;
+    border: none;
+    outline: none;
 }
 
 .red {
     background-color: red;
+    opacity: .4;
 }
 
 .blue {
     background-color: blue;
+    opacity: .4;
 }
 
 .yellow {
     background-color: yellow;
+    opacity: .4;
 }
 
 .green {
-    background-color: green;
+    background-color: rgb(6, 243, 6);
+    opacity: .4;
 }
 
 .score {
@@ -53,7 +59,11 @@ main {
 .restart {
     background-color: springgreen;
     border-radius: 5px;
+    border: none;
+    outline: none;
 }
+
+
 
 
 
