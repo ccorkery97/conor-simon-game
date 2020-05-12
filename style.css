@@ -1,0 +1,31 @@
+body {
+    background-color: grey;
+}
+header {
+    background-color: grey;
+    color: springgreen;
+    text-align: center;
+}
+
+main {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 400px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tile {
+    height: 165px;
+    width: 165px;
+    border-radius: 50px;
+}
