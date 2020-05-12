@@ -29,3 +29,32 @@ main {
     width: 165px;
     border-radius: 50px;
 }
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.score {
+    color: lightsalmon;
+}
+
+.restart {
+    background-color: springgreen;
+    border-radius: 5px;
+}
+
+
+
+
