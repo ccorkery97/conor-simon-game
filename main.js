@@ -19,6 +19,23 @@ function lightUp(element) {
 }
 
 
+let randomOrder = []
+
+let round = 1
+for (let i = 0; i < round; i++) {
+    randomOrder.push(Math.floor((Math.random() * 4)))
+    let tileNumber = 0
+    tiles.forEach(function(tile) {
+        if (tileNumber == randomOrder[i]) {
+            lightUp(tile)
+            setTimeout(function() {
+                lightUp(tile)
+            }, 1000)
+        }
+        tileNumber++
+    })
+}
+
 
 
 
