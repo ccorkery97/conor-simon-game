@@ -29,7 +29,7 @@ function lightUp(element) {
 
 let yourOrder = []
 let randomOrder = []
-
+randomOrder.push(Math.floor((Math.random() * 4)))
 
 function randomLightUp(num) {
     let tileNumber = 0
@@ -61,7 +61,12 @@ function yourSequence() {
     let yourTime = setInterval(function() {
         if (yourOrder.length == randomOrder.length) {
             clearInterval(yourTime)
-        } 
+            if (checkSequence()) {
+                console.log('good job')
+            } else {
+                console.log('game-over')
+            }
+        }  
     }, 500)
 }
 
@@ -76,4 +81,12 @@ let startGame = document.querySelector('.restart')
 startGame.addEventListener('click', gamePlay)
 
 
-
+function checkSequence() {
+    for (let i = 0; i < yourOrder.length; i++) {
+        if (yourOrder[i] != randomOrder[i]) {
+            return false
+        } 
+    }
+    gamePlay()
+    return true
+}
