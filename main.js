@@ -29,11 +29,6 @@ function lightUp(element) {
 
 let yourOrder = []
 let randomOrder = []
-randomOrder.push(Math.floor((Math.random() * 4)))
-randomOrder.push(Math.floor((Math.random() * 4)))
-randomOrder.push(Math.floor((Math.random() * 4)))
-
-
 
 
 function randomLightUp(num) {
@@ -62,11 +57,23 @@ function sequence() {
     }, 2000)  
 }
 
+function yourSequence() {
+    let yourTime = setInterval(function() {
+        if (yourOrder.length == randomOrder.length) {
+            clearInterval(yourTime)
+        } 
+    }, 500)
+}
+
+function gamePlay() {
+    randomOrder.push(Math.floor((Math.random() * 4)))
+    sequence()
+    yourSequence()
+}
 
 
-
-
-
+let startGame = document.querySelector('.restart')
+startGame.addEventListener('click', gamePlay)
 
 
 
