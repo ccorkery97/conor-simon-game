@@ -20,13 +20,15 @@ function lightUp(element) {
 
 
 let randomOrder = []
+randomOrder.push(Math.floor((Math.random() * 4)))
+randomOrder.push(Math.floor((Math.random() * 4)))
 
-let round = 1
-for (let i = 0; i < round; i++) {
-    randomOrder.push(Math.floor((Math.random() * 4)))
+
+
+function randomLightUp(num) {
     let tileNumber = 0
     tiles.forEach(function(tile) {
-        if (tileNumber == randomOrder[i]) {
+        if (tileNumber == num) {
             lightUp(tile)
             setTimeout(function() {
                 lightUp(tile)
@@ -35,6 +37,18 @@ for (let i = 0; i < round; i++) {
         tileNumber++
     })
 }
+
+let num = 0
+let playTime = setInterval(function() {
+    randomLightUp(randomOrder[num]) 
+    num++
+}, 2000)
+
+
+
+
+
+
 
 
 
