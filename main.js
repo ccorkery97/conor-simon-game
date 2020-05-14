@@ -1,5 +1,9 @@
 const tiles = document.querySelectorAll('.tile')
 
+let easy = 2000
+let normal = 1000
+let hard = 800
+
 tiles.forEach(function(tile) {
     tile.addEventListener('mousedown', function() {
         lightUp(tile)
@@ -37,14 +41,14 @@ function randomLightUp(num) {
             lightUp(tile)
             setTimeout(function() {
                 lightUp(tile)
-            }, 700)
+            }, 500)
         }
         tileNumber++
     })
 }
 
 
-function sequence() {
+function sequence(difficulty) {
     let num = 0
     let playTime = setInterval(function() {
         randomLightUp(randomOrder[num]) 
@@ -53,17 +57,17 @@ function sequence() {
         } else {
         num++
         }
-    }, 1000)  
+    }, difficulty)  
 }
 
 let message = document.querySelector('.loser')
 
 
-function yourSequence() {
+function yourSequence(difficulty) {
     let yourTime = setInterval(function() {
         if (yourOrder.length == randomOrder.length) {
             clearInterval(yourTime)
-            if (checkSequence()) {
+            if (checkSequence(difficulty)) {
                 message.textContent = 'Good Job!'
             } else {
                 message.textContent = 'Sorry Game Over'
@@ -76,7 +80,7 @@ function yourSequence() {
 let score = document.querySelector('.score')
 let scoreCounter = 0
 
-function gamePlay() {
+function gamePlay(difficulty) {
     if (message.textContent == 'Sorry Game Over') {
         message.textContent = `Let's Play!`
         yourOrder = []
@@ -85,15 +89,13 @@ function gamePlay() {
     }
     score.textContent = `Score: ${scoreCounter}`
     randomOrder.push(Math.floor((Math.random() * 4)))
-    sequence()
-    yourSequence()
+    sequence(difficulty)
+    yourSequence(difficulty)
 }
 
 
-let startGame = document.querySelector('.restart')
-startGame.addEventListener('click', gamePlay)
 
-function checkSequence() {
+function checkSequence(difficulty) {
     for (let i = 0; i < yourOrder.length; i++) {
         if (yourOrder[i] != randomOrder[i]) {
             return false
@@ -101,6 +103,25 @@ function checkSequence() {
     }
     yourOrder = []
     scoreCounter++
-    gamePlay()
+    gamePlay(difficulty)
     return true
 }
+
+let startGame = document.querySelectorAll('.restart')
+startGame.forEach(function(element) {
+    if (element.classList[1] == 'easy') {
+        element.addEventListener('click', function() {
+            gamePlay(easy)
+        })
+    } else if (element.classList[1] == 'normal') {
+        element.addEventListener('click', function() {
+            gamePlay(normal)
+        })
+    } else {
+        element.addEventListener('click', function() {
+            gamePlay(hard)
+        })
+    }
+})
+
+
