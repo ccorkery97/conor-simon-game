@@ -29,7 +29,6 @@ function lightUp(element) {
 
 let yourOrder = []
 let randomOrder = []
-randomOrder.push(Math.floor((Math.random() * 4)))
 
 function randomLightUp(num) {
     let tileNumber = 0
@@ -54,23 +53,37 @@ function sequence() {
         } else {
         num++
         }
-    }, 2000)  
+    }, 1000)  
 }
+
+let message = document.querySelector('.loser')
+
 
 function yourSequence() {
     let yourTime = setInterval(function() {
         if (yourOrder.length == randomOrder.length) {
             clearInterval(yourTime)
             if (checkSequence()) {
-                console.log('good job')
+                message.textContent = 'Good Job!'
             } else {
-                console.log('game-over')
+                message.textContent = 'Sorry Game Over'
             }
         }  
     }, 500)
 }
 
+
+let score = document.querySelector('.score')
+let scoreCounter = 0
+
 function gamePlay() {
+    if (message.textContent == 'Sorry Game Over') {
+        message.textContent = `Let's Play!`
+        yourOrder = []
+        randomOrder = []
+        scoreCounter = 0
+    }
+    score.textContent = `Score: ${scoreCounter}`
     randomOrder.push(Math.floor((Math.random() * 4)))
     sequence()
     yourSequence()
@@ -80,13 +93,14 @@ function gamePlay() {
 let startGame = document.querySelector('.restart')
 startGame.addEventListener('click', gamePlay)
 
-
 function checkSequence() {
     for (let i = 0; i < yourOrder.length; i++) {
         if (yourOrder[i] != randomOrder[i]) {
             return false
         } 
     }
+    yourOrder = []
+    scoreCounter++
     gamePlay()
     return true
 }
