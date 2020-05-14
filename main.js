@@ -1,8 +1,8 @@
 const tiles = document.querySelectorAll('.tile')
 
-let easy = 2000
-let normal = 1000
-let hard = 800
+let easy = 1200
+let normal = 800
+let hard = 500
 
 tiles.forEach(function(tile) {
     tile.addEventListener('mousedown', function() {
@@ -41,7 +41,7 @@ function randomLightUp(num) {
             lightUp(tile)
             setTimeout(function() {
                 lightUp(tile)
-            }, 500)
+            }, 400)
         }
         tileNumber++
     })
