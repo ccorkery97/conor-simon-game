@@ -54,6 +54,7 @@ function sequence(difficulty) {
         randomLightUp(randomOrder[num]) 
         if (num == (randomOrder.length - 1)) {
         clearInterval(playTime)
+        message.textContent = 'Your Turn'
         } else {
         num++
         }
